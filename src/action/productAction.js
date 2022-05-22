@@ -36,7 +36,7 @@ export const getQuestionSet = (id) => async (dispatch) => {
         dispatch({
             type: ALL_QUESTIONSET_REQUEST,
         });
-        const { data } = await axios.get(`/api/v1/questionSet/${id}`);
+        const { data } = await axios.get(`https://myquestionbankbackend.herokuapp.com/api/v1/questionSet/${id}`);
         // console.table(data.questionSet);
         dispatch({
             type: ALL_QUESTIONSET_SUCCESS,
@@ -58,7 +58,7 @@ export const getQuestion = (code, string) => async (dispatch) => {
         });
         // console.log(code);
         // console.log(string);
-        const { data } = await axios.get(`/api/v1/questions?questionSetCode=${code}&questionType=${string}`);
+        const { data } = await axios.get(`https://myquestionbankbackend.herokuapp.com/api/v1/questions?questionSetCode=${code}&questionType=${string}`);
         // console.log(data.questions[0].answers[0].answer);
         // console.log(data.questions[1].answers[0].answer);
         dispatch({
