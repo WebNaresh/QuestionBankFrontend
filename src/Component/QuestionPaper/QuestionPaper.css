@@ -1,0 +1,58 @@
+.question1 {
+    border: 2px solid black;
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column;
+    margin: 50px;
+    box-shadow: 10px 10px 10px black;
+    padding: 12px;
+}
+.question3 {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.input2{
+    width: 20.5vw;
+    height: 3.5vh;
+    margin: 9px;
+    border: 2px solid #bdbdbd;
+    padding: 5px;
+    border-radius: 7px;
+    color: black;
+}
+.question4 {
+    display: flex;
+    justify-content: space-around;
+}
+.question5 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.question6 {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+button.button1 {
+    width: 95px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 13px;
+    color: white;
+    background: #2874f0;
+}
+.cp{
+    cursor: pointer;
+}
+.question7{
+    display: flex;
+    margin: 10px 36px;
+
+}
+.submit {
+    margin: 20px;
+}

@@ -1,0 +1,31 @@
+.questionSet1 {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+}
+.questionSet2 {
+    background: white;
+    height: 125px;
+    border: 2px solid #878787;
+    border-radius: 21px;
+    margin: 20px;
+    padding: 10px 37px;
+    display: flex;
+
+    flex-direction: column;
+}
+.progress{
+    width: 20vw;
+    margin: auto;
+}
+.alignMe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.flex{
+    display: flex;
+}
+.questionSet1 :hover {
+    background: #dae7f2;
+}

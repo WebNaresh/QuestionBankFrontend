@@ -1,0 +1,112 @@
+.home1 {
+  height: 89vh;
+  width: 100%;
+  display: flex;
+  background-color: aqua;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.fa-icon3 {
+  cursor: pointer;
+  top: 18px;
+  margin: 5px;
+  width: 20px !important;
+}
+.fa-icon5 :first-child {
+  color: black;
+}
+
+.home-p {
+  color: #73777b;
+  font-weight: bolder;
+}
+.home1::after {
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background-color: #2d3643;
+  position: absolute;
+  top: 0;
+  right: 0;
+  clip-path: polygon(100% 76%, 0% 100%, 100% 100%);
+}
+
+.btn {
+  position: relative;
+  margin: 15px;
+  padding: 12px 27px;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #999999;
+  background: #ffffff;
+  border: 3px solid #999999;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  -webkit-transition: ease-out 0.5s;
+  -moz-transition: ease-out 0.5s;
+  width: 200px;
+  display: flex;
+  height: 62px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn.btn-border-4::after,
+.btn.btn-border-4::before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  transition: 0.5s;
+}
+
+.btn.btn-border-4::after {
+  top: -9px;
+  left: -9px;
+  border-top: 3px solid transparent;
+  border-left: 3px solid transparent;
+}
+
+.btn.btn-border-4::before {
+  bottom: -9px;
+  right: -9px;
+  border-bottom: 3px solid transparent;
+  border-right: 3px solid transparent;
+}
+
+.btn.btn-border-4:hover {
+  color: #222222;
+}
+button.btn.btn-border-4:hover {
+  background: cyan;
+}
+.btn.btn-border-4:hover::after,
+.btn.btn-border-4:hover::before {
+  width: calc(100% + 15px);
+  height: calc(100% + 15px);
+  border-color: #222222;
+}
+#featureHome {
+  border-bottom: 2px solid black;
+  width: 332px;
+  padding: 9px;
+  text-align: center;
+}
+#homeProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+p#iAmH1 {
+  font-weight: bolder;
+  color: #969ba1;
+
+}
+.btn.btn-border-4:hover> p#iAmH1 {
+  font-weight: bolder;
+  color: #000000
+}

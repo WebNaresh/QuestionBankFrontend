@@ -1,0 +1,36 @@
+.container a img {
+  width: 150px;
+  transition: all 1.5s;
+  border-radius: 10px;
+}
+.container span {
+  font-size: 12px;
+}
+.reactStars :first-child {
+  justify-content: center !important;
+}
+.container {
+  box-shadow: 1px 1px 10px black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 7px;
+}
+.container:hover img {
+  transform: scale(1.1);
+}
+#rowMe {
+  display: grid;
+  grid-template-columns: repeat(4, 240px);
+  margin: 50px 0;
+  grid-gap: 19px;
+}
+.reactStars {
+  display: flex;
+  flex-direction: column;
+}
+.productPrice {
+  color: #b32600;
+}
+.reviews {
+  color: #626466;
+}

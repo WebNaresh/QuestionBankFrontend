@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="shortcut icon" href="./exam.png" type="image/x-icon">
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,20 +21,164 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <title>React App</title>
+  <style>
+    body,
+    h1 {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    #preloader {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999999;
+    }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    body #preloader {
+      background-color: rgb(20, 20, 20);
+    }
+
+    #container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #container h1 {
+      color: white;
+      font-weight: 100;
+      font-size: 1.2rem;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    #inscription {
+      width: 13ch;
+      display: flex;
+    }
+
+    #inscription i {
+      color: white;
+      padding-right: 0.3rem;
+      padding-left: 0.7rem;
+      font-family: monospace;
+      font-style: italic;
+    }
+
+    #inscription span {
+      color: white;
+      font-family: monospace;
+      width: 4ch;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: slashes 4s steps(4) infinite;
+    }
+
+    #rectangles {
+      align-self: center;
+      width: 80px;
+      height: 80px;
+      position: relative;
+      justify-content: center;
+    }
+
+    .rect {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 4px double black;
+      border-radius: 10px;
+      animation: spinner 3s ease-in-out infinite;
+    }
+
+    .rect.q {
+      top: 0;
+      left: 0;
+      border-color: rgb(140, 50, 50);
+    }
+
+    .rect.w {
+      top: 0;
+      right: 0;
+      border-color: rgb(50, 140, 50);
+    }
+
+    .rect.e {
+      bottom: 0;
+      left: 0;
+      border-color: rgb(50, 140, 140);
+    }
+
+    .rect.r {
+      bottom: 0;
+      right: 0;
+      border-color: rgb(140, 140, 50);
+    }
+
+    @keyframes spinner {
+      45% {
+        border-color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      55% {
+        border-color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(1turn);
+      }
+
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+
+    @keyframes slashes {
+      0% {
+        width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body onload="myfuntions()">
+  <div id='preloader'>
+    <div id='container'>
+      <h1>Build Your Own Pc </h1>
+      <div id='rectangles'>
+        <div class='rect q'></div>
+        <div class='rect w'></div>
+        <div class='rect e'></div>
+        <div class='rect r'></div>
+      </div>
+      <div id='inscription'>
+        <i>Loading</i>
+        <span>...</span>
+      </div>
+    </div>
+  </div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script>
+    const preloader = document.getElementById("preloader");
+    function myfuntions() {
+      preloader.style.display = "none";
+    }
+
+  </script>
+</body>
+
 </html>
