@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.containerOfLogin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background : url('../../images/green.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.main {
+  height: 70%;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  justify-content: center;
+  position: relative;
+  box-shadow: 1px 1px 10px #333;
+  background: #fff;
+  position: relative;
+}
+
+
+
+.curtain {
+    transition: 1s all;
+    z-index: 1000;
+    position: absolute;
+    right: 0px;
+    background: linear-gradient(#31425a9d, #2d3643), url(../../images/depositphotos_21231459-stock-photo-young-and-education-woman-studying.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 50%;
+}
+
+.curtain.cu {
+    right: 50%;
+}
+
+.login,
+.register {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 10;
+
+}
+
+
+
+.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.f-dir {
+    flex-direction: column;
+}
+
+.login {
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+.logo-holder {
+    height: 5%;
+}
+
+.logo-holder h1 {
+    font-size: 3em;
+    color: teal;
+    font-family: 'Playball', cursive;
+}
+
+.loginL {
+    height: 15%;
+}
+
+.loginL h1 {
+    font-size: 1em;
+}
+
+
+
+.login-form {
+    height: 70%;
+}
+
+.lo-form {
+    height: 60%;
+    justify-content: space-around;
+}
+
+
+.input {
+    box-shadow: 1px 1px 4px #333;
+    outline: none;
+    border: none;
+    color: black;
+    text-align: center;
+    padding: 7px 45px;
+}
+
+
+.gap {
+    color: #fff;
+    margin: 5px;
+}
+
+.blue {
+    color: rgb(36, 7, 165);
+}
+
+.ex{
+    color: red;
+    font-weight: bold;
+}
+
+.hold {
+    align-items: flex-start;
+}
+
+.log-an {
+    height: 10%;
+}
+
+.horline{
+    height: 1px;
+    width: 40%;
+    background: #333;
+}
+
+.span-hold{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.sub {
+    padding: 6px 26px;
+    border: none;
+    box-shadow: 1px 1px 5px #333;
+    background: teal;
+    color: white;
+}
+
+.line {
+    height: 1px;
+    width: 40%;
+    background-color: black;
+}
+
+/* .span-hold {
+    justify-content: space-around;
+    width: 80%;
+} */
+
+i {
+    font-size: 2em;
+    margin: 0 10px;
+    color: var(--clr);
+}
+
+.another {
+    height: 25%;
+    justify-content: space-evenly;
+}
+
+.loginSignupButton {
+    padding: 7px 25px;
+    background: #333;
+    color: #fff;
+    border: none;
+    box-shadow: 1px 1px 5px #333;
+    margin: 10px 0;
+}
+
+.autot {
+    font-size: 1.7em;
+    font-family: 'Playball', cursive;
+}
+
+.hold span {
+    color: white;
+}
+
+.register {
+    justify-content: space-evenly;
+}
+
+
+.ro-form {
+    justify-content: space-around;
+    height: 80% !important;
+}
+
+.ex{
+    height: 10px;
+    font-size: small;
+}
+
+.forP {
+    font-size: 13px;
+    font-weight: bold;
+}

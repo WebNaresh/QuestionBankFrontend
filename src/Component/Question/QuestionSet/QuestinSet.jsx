@@ -2,14 +2,15 @@ import React from 'react'
 import ProgressBar from '@ramonak/react-progress-bar'
 import { Link } from 'react-router-dom'
 
-const QuestinSet = ({ questionType, code, eachMark }, props) => {
-  // console.log(questionType.qustionCount)
-  console.log(questionType)
-
+const QuestinSet = (
+  { questionType, code, eachMark, questionSetId, userQuSetId },
+  props
+) => {
   return (
     <>
       <Link
-        to={`/product/${questionType.qustionCount}/${eachMark}/${code}/${questionType.type}`}
+        to={`/product/${questionType.qustionCount}/${eachMark}/${code}/${questionType.type}/${questionSetId}`}
+        state={userQuSetId}
         className='questionSet1'
       >
         <div className='questionSet2'>

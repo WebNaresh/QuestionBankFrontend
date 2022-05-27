@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_QUESTIONSET_FAIL, ALL_QUESTIONSET_REQUEST, ALL_QUESTIONSET_SUCCESS, ALL_QUESTION_FAIL, ALL_QUESTION_REQUEST, ALL_QUESTION_SUCCESS, CLEAR_ERRORS } from '../constant/productConstant.';
+import { ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_QUESTIONSET_FAIL, ALL_QUESTIONSET_REQUEST, ALL_QUESTIONSET_SUCCESS, ALL_QUESTION_ANSWER_CHECK_FAIL, ALL_QUESTION_ANSWER_CHECK_REQUEST, ALL_QUESTION_ANSWER_CHECK_SUCCESS, ALL_QUESTION_FAIL, ALL_QUESTION_REQUEST, ALL_QUESTION_SUCCESS, CLEAR_ERRORS } from '../constant/productConstant.';
 
 export const productReducer = (state = { products: [] }, action) => {
     switch (action.type) {
@@ -81,8 +81,30 @@ export const questionsReducer = (state = { question: [] }, action) => {
             return state;
     }
 };
-export const markReducer = (state = { mark: 0 }, action) => {
-    return {
-        mark: state.mark + action.marks
-    };
+export const markReducer = (state = { answerCheck: [] }, action) => {
+    switch (action.type) {
+        case ALL_QUESTION_ANSWER_CHECK_REQUEST:
+            return {
+                loading: true,
+                ...state
+            };
+        case ALL_QUESTION_ANSWER_CHECK_SUCCESS:
+            return {
+                loading: false,
+                answerCheck: action.pushIt
+            };
+        case ALL_QUESTION_ANSWER_CHECK_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            };
+
+        default:
+            return state;
+    }
 };

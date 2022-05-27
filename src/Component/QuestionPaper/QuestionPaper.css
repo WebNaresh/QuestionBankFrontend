@@ -4,6 +4,7 @@
     border-radius: 20px;
     flex-direction: column;
     margin: 50px;
+    height: 350px;
     box-shadow: 10px 10px 10px black;
     padding: 12px;
 }
@@ -11,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    height: 100%;
 }
 .input2{
     width: 20.5vw;
@@ -24,6 +26,7 @@
 .question4 {
     display: flex;
     justify-content: space-around;
+    height: 100%;
 }
 .question5 {
     display: flex;
@@ -55,4 +58,36 @@ button.button1 {
 }
 .submit {
     margin: 20px;
+}
+.twelve {
+    background: #fff;
+    color: #383b3a;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 130px;
+    box-shadow: 0 3px #ccc;
+    transition: transform 100ms;
+    height: 44px;
+}
+
+.twelve:hover {
+    transform: translateY(1px);
+    box-shadow: 0 2px #ccc;
+}
+
+.twelve:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 1px #ccc;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noSoGood {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_QUESTIONSET_FAIL, ALL_QUESTIONSET_REQUEST, ALL_QUESTIONSET_SUCCESS, ALL_QUESTION_FAIL, ALL_QUESTION_REQUEST, ALL_QUESTION_SUCCESS, CLEAR_ERRORS
+    ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_QUESTIONSET_FAIL, ALL_QUESTIONSET_REQUEST, ALL_QUESTIONSET_SUCCESS, ALL_QUESTION_ANSWER_CHECK_FAIL, ALL_QUESTION_ANSWER_CHECK_REQUEST, ALL_QUESTION_ANSWER_CHECK_SUCCESS, ALL_QUESTION_FAIL, ALL_QUESTION_REQUEST, ALL_QUESTION_SUCCESS, CLEAR_ERRORS
 
 } from '../constant/productConstant.';
 export const getProduct = () => async (dispatch) => {
@@ -8,7 +8,6 @@ export const getProduct = () => async (dispatch) => {
         dispatch({
             type: ALL_PRODUCT_REQUEST,
         });
-        // console.log(process.env.REACT_APP_QUESTION_SET);
         const { data } = await axios.get(process.env.REACT_APP_QUESTION_SET);
 
         dispatch({
@@ -32,12 +31,10 @@ export const clearErrors = () => async (dispatch) => {
 
 export const getQuestionSet = (id) => async (dispatch) => {
     try {
-        // console.log(id);
         dispatch({
             type: ALL_QUESTIONSET_REQUEST,
         });
-        const { data } = await axios.get(`https://myquestionbankbackend.herokuapp.com/api/v1/questionSet/${id}`);
-        // console.table(data.questionSet);
+        const { data } = await axios.get(` https://myquestionbankbackend.herokuapp.com/questionSet/${id}`);
         dispatch({
             type: ALL_QUESTIONSET_SUCCESS,
             payload: data.questionSet,
@@ -50,17 +47,25 @@ export const getQuestionSet = (id) => async (dispatch) => {
         });
     }
 };
+
 export const getQuestion = (code, string) => async (dispatch) => {
     try {
-        // console.log(id);
         dispatch({
             type: ALL_QUESTION_REQUEST,
         });
-        // console.log(code);
-        // console.log(string);
-        const { data } = await axios.get(`https://myquestionbankbackend.herokuapp.com/api/v1/questions?questionSetCode=${code}&questionType=${string}`);
-        // console.log(data.questions[0].answers[0].answer);
-        // console.log(data.questions[1].answers[0].answer);
+        const { data } = await axios.get(` https://myquestionbankbackend.herokuapp.com/questions?questionSetCode=${code}&questionType=${string}`);
+        const secondeArray = data.questions;
+        data.filter1.forEach(element => {
+            data.questions.filter((questions) => {
+                if (element === questions._id) {
+                    let index = secondeArray.indexOf(questions);
+                    secondeArray.splice(index, 1);
+                }
+                return questions;
+            });
+        });
+
+
         dispatch({
             type: ALL_QUESTION_SUCCESS,
             payload: data.questions,
@@ -72,8 +77,23 @@ export const getQuestion = (code, string) => async (dispatch) => {
         });
     }
 };
-export const getMark = (i) => async (dispatch) => {
-    dispatch({
-        marks: i
-    });
+export const getAnswerCheck = (userAnswer, mark, questionSetId, userId, id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: ALL_QUESTION_ANSWER_CHECK_REQUEST
+        });
+        const config = { headers: { "Content-Type": "application/json" } };
+        const { data } = await axios.post(` https://myquestionbankbackend.herokuapp.com/questions/${id}/`, { userAnswer, mark, questionSetId, userId },
+            config);
+        console.log(data);
+        dispatch({ type: ALL_QUESTION_ANSWER_CHECK_SUCCESS });
+
+
+    } catch (error) {
+        console.log(error);
+        dispatch({
+            type: ALL_QUESTION_ANSWER_CHECK_FAIL,
+            payload: error.response.data.message,
+        });
+    }
 };

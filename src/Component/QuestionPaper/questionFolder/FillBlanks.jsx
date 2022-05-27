@@ -1,21 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import '../../../Utils/QuestionSwitch/QuestionSwitch'
+import { getAnswerCheck } from '../../../action/productAction'
+import { useDispatch, useSelector } from 'react-redux'
 
-const FillBlanks = ({
-  inputAnswer,
-  queston1,
-  answer,
-  setAnswer,
-  userAnswer
-}) => {
+const FillBlanks = ({ queston1, stae1, filterTheQuestins }, ref) => {
   const [studentAnswer, setStudentAnswer] = useState('')
-  // console.log(typeof inputAnswer)
-  // console.log(setAnswer)
-  console.log(queston1)
   let params = useParams()
+  const dispatch = useDispatch()
+  const { error, loading, answerCheck } = useSelector(
+    state => state.answerCheck
+  )
+  useEffect(() => {
+    if (error) {
+      return alert.error(error)
+    }
+  }, [error])
+  console.log(stae1)
+
+  const callReducer = () => {
+    console.log(params.questionSetId)
+    dispatch(
+      getAnswerCheck(
+        studentAnswer,
+        params.mark,
+        stae1,
+        '628e55881ca9eb67e2af8c48',
+        queston1._id
+      )
+    )
+    filterTheQuestins(queston1._id)
+
+    console.log(queston1._id)
+    console.log(loading)
+    console.log(answerCheck)
+  }
   return (
     <div>
       <div className='question1'>
@@ -46,10 +67,15 @@ const FillBlanks = ({
             <button className='button1 cp'>SKIP</button>
             <button className='button1 cp'>Solved It Later</button>
           </div>
+          <div className='button-box'>
+            <button className='twelve' onClick={callReducer}>
+              Submit Answer
+            </button>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default FillBlanks
+export default forwardRef(FillBlanks)

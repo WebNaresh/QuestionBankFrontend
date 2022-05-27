@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { markReducer, productReducer, questionReducer, questionsReducer } from './reducers/productReducer';
+import { loginReducer } from './reducers/userReducer';
 
 const reducers = combineReducers({
     question: productReducer,
     questionSet: questionReducer,
     questions: questionsReducer,
-    mark: markReducer
+    mark: markReducer,
+    logiUser: loginReducer
 
 });
 let initialState = {};

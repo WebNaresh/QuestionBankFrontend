@@ -6,7 +6,11 @@ const Product = ({ question }) => {
   const date = new Date(question.paperDate).toDateString()
   return (
     <>
-      <Link className='productCard' to={`questionSet/${question._id}`}>
+      <Link
+        className='productCard'
+        state={question}
+        to={`questionSet/${question._id}`}
+      >
         <img src={question.questionPaperImage} alt={question.title} />
         <p>{question.miniTitle}</p>
         <div className={'reactStars'}>

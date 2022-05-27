@@ -37,9 +37,9 @@ const SideNav = React.forwardRef((props, ref) => {
               </Link>
             </li>
             <li>
-              <Link className='link_underline' to={'/contatct'}>
+              <Link className='link_underline' to={'/login_signup'}>
                 <FontAwesomeIcon icon={faAddressCard} />
-                &#160; Contact
+                &#160; Login / SignUp
               </Link>
             </li>
             <li>
