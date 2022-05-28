@@ -14,16 +14,15 @@ import store from './store';
 
 import { loadUser } from './action/userAction';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 
 
 
 function App() {
-  const dispatch = useDispatch();
   React.useEffect(() => {
     store.dispatch(loadUser());
-  }, [dispatch]);
+
+  }, []);
 
   return (
     <>

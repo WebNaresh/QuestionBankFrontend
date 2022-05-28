@@ -22,10 +22,9 @@ export const get_login = (email, password) => async (dispatch) => {
             type: LOGIN_REQUEST
         });
         const config = { headers: { "Content-Type": "application/json" } };
-        const { data } = await axios.post(" https://myquestionbankbackend.herokuapp.com/api/v1/login", {
+        const { data } = await axios.post(" http://localhost:4000/api/v1/login", {
             email, password
         }, config);
-        console.log(data);
         localStorage.setItem("token", data.token);
         dispatch({
             type: LOGIN_SUCCESS,
@@ -33,7 +32,6 @@ export const get_login = (email, password) => async (dispatch) => {
         });
 
     } catch (error) {
-        console.log(error);
         dispatch({
             type: LOGIN_FAIL,
             payload: error.response.data.message,
@@ -49,15 +47,13 @@ export const loadUser = () => async (dispatch) => {
             type: USER_REQUEST
         });
         const config = { headers: { "Content-Type": "application/json", "token": localStorage.getItem('token') }, };
-        const { data } = await axios.get(" https://myquestionbankbackend.herokuapp.com/api/v1/me", config);
-        console.log(data);
+        const { data } = await axios.get(" http://localhost:4000/api/v1/me", config);
         dispatch({
             type: USER_SUCCESS,
             payload: data.user
         });
 
     } catch (error) {
-        console.log(error);
         dispatch({
             type: USER_FAIL,
             payload: error.response.data.message

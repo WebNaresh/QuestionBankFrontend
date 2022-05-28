@@ -1,0 +1,18 @@
+.bollean {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: column;
+}
+label{
+    color: black;
+    cursor: pointer;
+}
+.trueMe {
+    width: 100px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

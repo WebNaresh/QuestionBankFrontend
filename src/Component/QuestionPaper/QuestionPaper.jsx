@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MetaData from '../../Utils/MetaData'
 import { getQuestion } from '../../action/productAction'
 import { useAlert } from 'react-alert'
 import Loader from '../Home/Product/Loader/Loader'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import './QuestionPaper.css'
-import FillBlanks from './questionFolder/FillBlanks'
+import FillBlanks from './questionFolder/FillBlanks/FillBlanks'
 import { clearErrors } from '../../action/userAction'
+import TrueFalse from './questionFolder/StateTrueFalse/TrueFalse'
+import MultipleSingle from './questionFolder/MultipleSingle/MultipleSingle'
 
 const QuestionPaper = () => {
   let params = useParams()
   const alert = useAlert()
-  const { state } = useLocation()
   const dispatch = useDispatch()
-  const { questions, error, loading } = useSelector(state => state.questions)
-  const [questionSet1, setQuestionSet1] = useState(questions ? questions : '')
-  const filterTheQuestins = id => {
-    const filterset = questionSet1.filter(e => e._id !== id)
-    setQuestionSet1(filterset)
-  }
-  console.log(questionSet1)
+  const { question, error, loading } = useSelector(state => state.questions)
   useEffect(() => {
+    dispatch(getQuestion(params.code, params.id))
     if (error) {
       alert.error(error)
       dispatch(clearErrors())
     }
-    dispatch(getQuestion(params.code, params.id))
-  }, [dispatch, error, alert, params.id, params.code])
-  console.log(questionSet1.length)
+  }, [error, dispatch, alert, params.id, params.code])
+  console.log(question)
 
   return (
     <>
@@ -37,7 +32,7 @@ const QuestionPaper = () => {
       ) : (
         <>
           <MetaData title='Build QUESTION PAPER' />
-          {questionSet1.length === 0 ? (
+          {question.length === 0 ? (
             <div className='noSoGood'>
               <h4>You Have Completed This Section</h4>
             </div>
@@ -52,14 +47,9 @@ const QuestionPaper = () => {
               case 'Fill in the blanks':
                 return (
                   <>
-                    {questionSet1 &&
-                      questions.map(questions => (
-                        <FillBlanks
-                          key={questions._id}
-                          stae1={state}
-                          queston1={questions}
-                          filterTheQuestins={filterTheQuestins}
-                        />
+                    {question &&
+                      question.map(questions => (
+                        <FillBlanks key={questions._id} queston1={questions} />
                       ))}
                   </>
                 )
@@ -67,13 +57,26 @@ const QuestionPaper = () => {
               case 'State whether True or False':
                 return (
                   <>
-                    <div className='div'></div>
+                    {question &&
+                      question.map(questions => (
+                        <TrueFalse
+                          key={questions._id}
+                          loading={loading}
+                          queston1={questions}
+                        />
+                      ))}
                   </>
                 )
               case 'Multiple choice question with single correct answer':
                 return (
                   <>
-                    <div className='div'></div>
+                    {question &&
+                      question.map(questions => (
+                        <MultipleSingle
+                          key={questions._id}
+                          queston1={questions}
+                        />
+                      ))}
                   </>
                 )
               case 'Multiple choice question with TWO correct answers':

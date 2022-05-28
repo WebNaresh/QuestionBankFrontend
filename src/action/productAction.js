@@ -34,7 +34,7 @@ export const getQuestionSet = (id) => async (dispatch) => {
         dispatch({
             type: ALL_QUESTIONSET_REQUEST,
         });
-        const { data } = await axios.get(` https://myquestionbankbackend.herokuapp.com/questionSet/${id}`);
+        const { data } = await axios.get(` http://localhost:4000/api/v1/questionSet/${id}`);
         dispatch({
             type: ALL_QUESTIONSET_SUCCESS,
             payload: data.questionSet,
@@ -53,7 +53,7 @@ export const getQuestion = (code, string) => async (dispatch) => {
         dispatch({
             type: ALL_QUESTION_REQUEST,
         });
-        const { data } = await axios.get(` https://myquestionbankbackend.herokuapp.com/questions?questionSetCode=${code}&questionType=${string}`);
+        const { data } = await axios.get(` http://localhost:4000/api/v1/questions?questionSetCode=${code}&questionType=${string}`);
         const secondeArray = data.questions;
         data.filter1.forEach(element => {
             data.questions.filter((questions) => {
@@ -62,6 +62,7 @@ export const getQuestion = (code, string) => async (dispatch) => {
                     secondeArray.splice(index, 1);
                 }
                 return questions;
+
             });
         });
 
@@ -83,7 +84,7 @@ export const getAnswerCheck = (userAnswer, mark, questionSetId, userId, id) => a
             type: ALL_QUESTION_ANSWER_CHECK_REQUEST
         });
         const config = { headers: { "Content-Type": "application/json" } };
-        const { data } = await axios.post(` https://myquestionbankbackend.herokuapp.com/questions/${id}/`, { userAnswer, mark, questionSetId, userId },
+        const { data } = await axios.post(` http://localhost:4000/api/v1/questions/${id}/`, { userAnswer, mark, questionSetId, userId },
             config);
         console.log(data);
         dispatch({ type: ALL_QUESTION_ANSWER_CHECK_SUCCESS });

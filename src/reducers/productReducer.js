@@ -65,7 +65,7 @@ export const questionsReducer = (state = { question: [] }, action) => {
         case ALL_QUESTION_SUCCESS:
             return {
                 loading: false,
-                questions: action.payload,
+                question: action.payload,
             };
         case ALL_QUESTION_FAIL:
             return {
